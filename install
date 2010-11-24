@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# tl;dr installer
+# https://github.com/narfdotpl/tldr
+
+
+# check for required apps
+for app in 'mustache'; do
+    if [[ ! -x "`which $app`" ]]; then
+        echo "You have to install $app first.  See README for links."
+        exit 1
+    fi
+done
+
+# ask
+echo -n 'I will create/override ~/bin/{tl,dr}, k?  '
+read answer
+if [[ $answer != 'k' ]]; then
+    echo "'$answer' != 'k'.  Too bad."
+    exit 2
+fi
+
+# install
+mkdir -p ~/bin
+mustache config.yaml templates/tl > ~/bin/tl
+cp templates/dr ~/bin
+chmod +x ~/bin/{tl,dr}
+
+# say bye
+echo 'Be sure to have ~/bin in your $PATH.'
