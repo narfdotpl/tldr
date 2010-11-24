@@ -18,3 +18,8 @@ curl --silent \
      --cookie $jar \
      --output $mobi \
      http://www.instapaper.com/mobi
+
+# send mobi
+echo | mutt -F ~/.muttrc-tldr \
+            -a $mobi \
+            -- {{kindle_address}} 2> /dev/null

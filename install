@@ -5,22 +5,33 @@
 
 
 # check for required apps
-for app in 'curl' 'mustache'; do
+for app in 'curl' 'mutt' 'mustache'; do
     if [[ ! -x "`which $app`" ]]; then
         echo "You have to install $app first.  See README for links."
         exit 1
     fi
+
+    if [[ $app = 'mutt' ]]; then
+        if [[ `mutt -v | head -n1 | awk '{ print $2 }'` = '1.5.20' ]]; then
+            echo 'Get mutt 1.5.21 or higher because 1.5.20 is flawed:'
+            echo 'http://dev.mutt.org/trac/ticket/3289'
+            exit 1
+        fi
+    fi
 done
 
 # ask
-echo -n 'I will create/override ~/bin/{tl,dr}, k?  '
+echo -n 'I will create/override ~/bin/{tl,dr} and ~/.muttrc-tldr, k?  '
 read answer
 if [[ $answer != 'k' ]]; then
     echo "'$answer' != 'k'.  Too bad."
     exit 2
 fi
 
-# install
+# create ~/.muttrc-tldr
+mustache config.yaml templates/muttrc > ~/.muttrc-tldr
+
+# create ~/bin/{tl,dr}
 mkdir -p ~/bin
 mustache config.yaml templates/tl > ~/bin/tl
 cp templates/dr ~/bin
