@@ -5,7 +5,7 @@
 
 
 # check for required apps
-for app in 'mustache'; do
+for app in 'curl' 'mustache'; do
     if [[ ! -x "`which $app`" ]]; then
         echo "You have to install $app first.  See README for links."
         exit 1

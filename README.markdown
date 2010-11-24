@@ -24,8 +24,10 @@ Meta
 ----
 
 tl;dr is written by [Maciej Konieczny][].  This software is released
-into the [public domain][].  Internally it uses [Mustache][].
+into the [public domain][].  Internally it uses [cURL][] and
+[Mustache][].
 
   [Maciej Konieczny]: http://narf.pl/
   [public domain]: http://unlicense.org/
+  [cURL]: http://curl.haxx.se/
   [Mustache]: http://mustache.github.com/

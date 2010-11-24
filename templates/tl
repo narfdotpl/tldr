@@ -2,3 +2,19 @@
 
 # tl part of tl;dr
 # https://github.com/narfdotpl/tldr
+
+
+# get cookie
+jar=/tmp/tldr-jar
+curl --silent \
+     --cookie-jar $jar \
+     --data-urlencode username="{{instapaper_username}}" \
+     --data-urlencode password="{{instapaper_password}}" \
+     http://www.instapaper.com/user/login > /dev/null
+
+# download mobi
+mobi=/tmp/tldr.mobi
+curl --silent \
+     --cookie $jar \
+     --output $mobi \
+     http://www.instapaper.com/mobi
