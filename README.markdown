@@ -15,6 +15,8 @@ Installation
 
     git clone https://github.com/narfdotpl/tldr.git
     cd tldr
+    $EDITOR config.yaml
+    git commit --all --message='customized config'
     ./install
 
 
