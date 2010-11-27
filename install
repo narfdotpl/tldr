@@ -34,6 +34,8 @@ mustache config.yaml templates/muttrc > ~/.muttrc-tldr
 # create ~/bin/{tl,dr}
 mkdir -p ~/bin
 mustache config.yaml templates/tl > ~/bin/tl
+perl -pi -e 's/\\\n/ /g' ~/bin/tl
+perl -pi -e 's/ +/ /g' ~/bin/tl
 cp templates/dr ~/bin
 chmod +x ~/bin/{tl,dr}
 

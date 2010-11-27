@@ -1,7 +1,7 @@
 tl;dr
 =====
 
-Bash fewliner that sends Instapaper articles to Kindle using Gmail.
+Bash oneliner that sends Instapaper articles to Kindle using Gmail.
 
 
 Usage

@@ -4,22 +4,16 @@
 # https://github.com/narfdotpl/tldr
 
 
-# get cookie
-jar=/tmp/tldr-jar
+# get cookie && download mobi && send mobi
 curl --silent \
-     --cookie-jar $jar \
+     --cookie-jar /tmp/tldr-jar \
      --data-urlencode username="{{instapaper_username}}" \
      --data-urlencode password="{{instapaper_password}}" \
-     http://www.instapaper.com/user/login > /dev/null
-
-# download mobi
-mobi=/tmp/tldr.mobi
+     http://www.instapaper.com/user/login > /dev/null && \
 curl --silent \
-     --cookie $jar \
-     --output $mobi \
-     http://www.instapaper.com/mobi
-
-# send mobi
+     --cookie /tmp/tldr-jar \
+     --output /tmp/tldr.mobi \
+     http://www.instapaper.com/mobi && \
 echo | mutt -F ~/.muttrc-tldr \
-            -a $mobi \
+            -a /tmp/tldr.mobi \
             -- {{kindle_address}} 2> /dev/null
