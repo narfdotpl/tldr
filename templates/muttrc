@@ -4,3 +4,4 @@
 set smtp_url = "smtp://{{gmail_username}}@smtp.gmail.com:587/"
 set smtp_pass = "{{gmail_password}}"
 set from = "{{from_address}}"
+set copy = no  # don't save mails
