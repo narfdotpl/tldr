@@ -3,5 +3,8 @@
 
 set smtp_url = "smtp://{{gmail_username}}@smtp.gmail.com:587/"
 set smtp_pass = "{{gmail_password}}"
+set imap_user = "{{gmail_username}}@gmail.com"
+set imap_pass = "{{gmail_password}}"
+set spoolfile = imaps://imap.gmail.com:993/INBOX
 set from = "{{from_address}}"
 set copy = no  # don't save mails
